@@ -1,10 +1,15 @@
 import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
 function Footer() {
 	return (
-		<div>
-			<footer>Footer</footer>
-		</div>
+		<footer>
+			<Row>
+				<Col className='text-center py-3'>
+					&copy; 2021 Thumb Technology Consulting LLC
+				</Col>
+			</Row>
+		</footer>
 	);
 }
 

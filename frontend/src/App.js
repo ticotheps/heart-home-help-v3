@@ -7,7 +7,7 @@ function App() {
 	return (
 		<div>
 			<Header />
-			<main className='py-5'>
+			<main className='py-3'>
 				<Container>
 					<h1>Heart. Home. Help.</h1>
 				</Container>
