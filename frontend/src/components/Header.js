@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, Container, Row } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 function Header() {
 	return (
@@ -9,8 +9,10 @@ function Header() {
 					<Navbar.Brand href='/'>Home</Navbar.Brand>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>
-						<Nav className='me-auto'>
-							<Nav.Link href='/cart'>Cart</Nav.Link>
+						<Nav className='mr-auto'>
+							<Nav.Link href='/cart'>
+								<i className='fas fa-shopping-cart px-2'></i>Cart
+							</Nav.Link>
 							<Nav.Link href='/login'>Login</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
