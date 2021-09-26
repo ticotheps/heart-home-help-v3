@@ -35,7 +35,7 @@ const needs = [
 		category: 'Food',
 		price: 6.99,
 		countInStock: 5,
-		rating: 3,
+		rating: 2.5,
 		numReviews: 12,
 	},
 	{
@@ -48,7 +48,7 @@ const needs = [
 		category: 'Food',
 		price: 8.99,
 		countInStock: 11,
-		rating: 5,
+		rating: 3.0,
 		numReviews: 12,
 	},
 	{

@@ -1,11 +1,15 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import Rating from './Rating';
 
 export default function Need({ need }) {
 	return (
-		<Card className='my-3 p-3 rounded'>
+		<Card
+			style={{ width: '16rem', height: '24rem' }}
+			className='my-3 p-3 rounded need-card'
+		>
 			<a href={`/need/${need._id}`}>
-				<Card.Img src={need.image} />
+				<Card.Img className='card-image' src={need.image} />
 			</a>
 
 			<Card.Body>
@@ -17,7 +21,11 @@ export default function Need({ need }) {
 
 				<Card.Text as='div'>
 					<div className='my-3'>
-						{need.rating} from {need.numReviews} reviews
+						<Rating
+							value={need.rating}
+							text={`${need.numReviews}`}
+							color={'#f8e825'}
+						/>
 					</div>
 				</Card.Text>
 
