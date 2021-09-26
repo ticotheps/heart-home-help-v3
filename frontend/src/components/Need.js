@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import Rating from './Rating';
+import { Link } from 'react-router-dom';
 
 export default function Need({ need }) {
 	return (
@@ -8,16 +9,16 @@ export default function Need({ need }) {
 			style={{ width: '16rem', height: '24rem' }}
 			className='my-3 p-3 rounded need-card'
 		>
-			<a href={`/need/${need._id}`}>
+			<Link to={`/need/${need._id}`}>
 				<Card.Img className='card-image' src={need.image} />
-			</a>
+			</Link>
 
 			<Card.Body>
-				<a href={`/need/${need._id}`}>
+				<Link to={`/need/${need._id}`}>
 					<Card.Title as='div'>
 						<strong>{need.name}</strong>
 					</Card.Title>
-				</a>
+				</Link>
 
 				<Card.Text as='div'>
 					<div className='my-3'>
