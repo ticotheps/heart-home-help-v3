@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
+import Need from '../components/Need'
 
 import needs from '../needs';
 
@@ -10,7 +11,7 @@ export default function HomeScreen() {
 			<Row>
 				{needs.map((need) => (
 					<Col key={need._id} sm={12} md={6} lg={4} xl={3}>
-						<h3>{need.name}</h3>
+						<Need need={need} />
 					</Col>
 				))}
 			</Row>
