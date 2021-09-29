@@ -16,6 +16,21 @@ export default function NeedScreen({ match }) {
 				<Col md={6}>
 					<Image src={need.image} alt={need.name} fluid />
 				</Col>
+				<Col md={3}>
+					<ListGroup variant='flush'>
+						<ListGroup.Item>
+							<h3>{need.name}</h3>
+						</ListGroup.Item>
+						<ListGroup.Item>
+							<Rating
+								value={need.rating}
+								text={`${need.numReviews} reviews`}
+								color={'#f8e825'}
+							/>
+						</ListGroup.Item>
+					</ListGroup>
+				</Col>
+				<Col md={3}></Col>
 			</Row>
 		</div>
 	);
