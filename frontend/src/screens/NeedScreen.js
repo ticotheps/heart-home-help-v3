@@ -53,7 +53,11 @@ export default function NeedScreen({ match }) {
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<div class='d-grid gap-2'>
-									<Button className='btn btn-lg btn-dark' type='button'>
+									<Button
+										className='btn btn-lg btn-dark'
+										disabled={need.countInStock === 0}
+										type='button'
+									>
 										Add to Cart
 									</Button>
 								</div>
