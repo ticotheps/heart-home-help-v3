@@ -6,7 +6,7 @@ import Rating from '../components/Rating';
 import needs from '../needs';
 
 export default function NeedScreen({ match }) {
-	const need = needs.find((need) => need._id == match.params.id);
+	const need = needs.find((need) => need._id === match.params.id);
 	return (
 		<div>
 			<Link to='/' className='btn btn-light my-3'>
@@ -50,6 +50,13 @@ export default function NeedScreen({ match }) {
 										{need.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
 									</Col>
 								</Row>
+							</ListGroup.Item>
+							<ListGroup.Item>
+								<div class='d-grid gap-2'>
+									<Button className='btn btn-lg btn-dark' type='button'>
+										Add to Cart
+									</Button>
+								</div>
 							</ListGroup.Item>
 						</ListGroup>
 					</Card>
