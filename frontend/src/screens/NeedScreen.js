@@ -28,9 +28,32 @@ export default function NeedScreen({ match }) {
 								color={'#f8e825'}
 							/>
 						</ListGroup.Item>
+						<ListGroup.Item>Price: ${need.price}</ListGroup.Item>
+						<ListGroup.Item>Description: {need.description}</ListGroup.Item>
 					</ListGroup>
 				</Col>
-				<Col md={3}></Col>
+				<Col md={3}>
+					<Card>
+						<ListGroup variant='flush'>
+							<ListGroup.Item>
+								<Row>
+									<Col>Price: </Col>
+									<Col>
+										<strong>${need.price}</strong>
+									</Col>
+								</Row>
+							</ListGroup.Item>
+							<ListGroup.Item>
+								<Row>
+									<Col>Status: </Col>
+									<Col>
+										{need.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+									</Col>
+								</Row>
+							</ListGroup.Item>
+						</ListGroup>
+					</Card>
+				</Col>
 			</Row>
 		</div>
 	);
