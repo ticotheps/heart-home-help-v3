@@ -24,3 +24,13 @@ def getRoutes(request):
 @api_view(['GET'])
 def getNeeds(request):
     return Response(needs)
+
+@api_view(['GET'])
+def getNeed(request, pk):
+    need = None
+    for i in needs:
+        if i['_id'] == pk:
+            need = i
+            break
+
+    return Response(need)
