@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import Need from '../components/Need'
-
-import needs from '../needs';
+import Need from '../components/Need';
+import axios from 'axios';
 
 export default function HomeScreen() {
+	const [needs, setNeeds] = useState([]);
+
+	useEffect(() => {
+		async function fetchNeeds() {
+			// fetch data
+			const { data } = await axios.get('http://127.0.0.1:8000/api/needs/');
+			// set 'data' to state
+			setNeeds(data);
+		}
+		fetchNeeds();
+	}, []);
+
 	return (
 		<div>
 			<h1>Latest Needs</h1>
