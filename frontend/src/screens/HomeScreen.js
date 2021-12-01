@@ -9,7 +9,8 @@ export default function HomeScreen() {
 	useEffect(() => {
 		async function fetchNeeds() {
 			// fetch data
-			const { data } = await axios.get('http://127.0.0.1:8000/api/needs/');
+			const { data } = await axios.get('/api/needs/');
+			console.log("Run 'fetchNeeds()'");
 			// set 'data' to state
 			setNeeds(data);
 		}
