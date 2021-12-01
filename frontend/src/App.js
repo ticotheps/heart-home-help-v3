@@ -13,7 +13,7 @@ function App() {
 			<main className='py-3'>
 				<Container>
 					<Route path='/' component={HomeScreen} exact />
-					<Route path='/need/:id' component={NeedScreen} />
+					<Route path='/needs/:id' component={NeedScreen} />
 				</Container>
 			</main>
 			<Footer />
