@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap';
 import Rating from '../components/Rating';
-
-import needs from '../needs';
+import axios from 'axios';
 
 export default function NeedScreen({ match }) {
-	const need = needs.find((need) => need._id === match.params.id);
+	const [need, setNeed] = useState([]);
+
+	useEffect(() => {
+		async function fetchNeed() {
+			// fetch data
+			const { data } = await axios.get(`/api/needs/${match.params.id}`);
+			console.log("Run 'fetchNeed()' axios call");
+			// set 'data' to state
+			setNeed(data);
+		}
+		fetchNeed();
+	}, []);
+
 	return (
 		<div>
 			<Link to='/' className='btn btn-light my-3'>
@@ -52,7 +63,7 @@ export default function NeedScreen({ match }) {
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
-								<div class='d-grid gap-2'>
+								<div className='d-grid gap-2'>
 									<Button
 										className='btn btn-lg btn-dark'
 										disabled={need.countInStock === 0}
