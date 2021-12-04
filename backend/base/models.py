@@ -30,3 +30,8 @@ class Review(models.Model):
     
     def __str__(self):
         return str(self.rating)
+    
+    
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    need = models.ForeignKey(Need, on_delete=models.SET_NULL, null=True)
