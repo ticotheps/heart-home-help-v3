@@ -10,7 +10,6 @@ export default function HomeScreen() {
 		async function fetchNeeds() {
 			// fetch data
 			const { data } = await axios.get('/api/needs/');
-			console.log("Run 'fetchNeeds()'");
 			// set 'data' to state
 			setNeeds(data);
 		}

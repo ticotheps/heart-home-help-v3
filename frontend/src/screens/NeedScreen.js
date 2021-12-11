@@ -11,12 +11,11 @@ export default function NeedScreen({ match }) {
 		async function fetchNeed() {
 			// fetch data
 			const { data } = await axios.get(`/api/needs/${match.params.id}`);
-			console.log("Run 'fetchNeed()' axios call");
 			// set 'data' to state
 			setNeed(data);
 		}
 		fetchNeed();
-	}, []);
+	}, [match.params.id]);
 
 	return (
 		<div>
