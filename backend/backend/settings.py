@@ -126,10 +126,20 @@ STATIC_URL = '/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:3000",
-    "http://localhost:3000",
+# This tells Django where our static files are stored
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
 ]
-# CORS_ALLOW_ALL_ORIGINS = True
+
+MEDIA_ROOT = 'static/images'
+
+# # Allows only those clients in this list to hit our back-end API
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:3000",
+#     "http://localhost:3000",
+# ]
+
+# Allows all clients to hit our back-end API
+CORS_ALLOW_ALL_ORIGINS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
