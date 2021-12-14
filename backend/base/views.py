@@ -28,15 +28,13 @@ def getRoutes(request):
 def getNeeds(request):
     # retrieves all of the 'Need' objects within the DB
     needs = Need.objects.all()
+    # serializes multiple 'Need' objects
     serializer = NeedSerializer(needs, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def getNeed(request, pk):
-    need = None
-    for i in needs:
-        if i['_id'] == pk:
-            need = i
-            break
-
-    return Response(need)
+    need = Need.objects.get(_id=pk)
+    # serializes only a single 'Need' object
+    serializer = NeedSerializer(need, many=False)
+    return Response(serializer.data)
