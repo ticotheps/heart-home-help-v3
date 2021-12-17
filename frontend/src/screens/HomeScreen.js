@@ -8,9 +8,7 @@ export default function HomeScreen() {
 
 	useEffect(() => {
 		async function fetchNeeds() {
-			// fetch data
 			const { data } = await axios.get('/api/needs/');
-			// set 'data' to state
 			setNeeds(data);
 		}
 		fetchNeeds();
