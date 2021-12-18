@@ -5,7 +5,7 @@ import {
 	NEED_LIST_FAIL,
 } from '../constants/needConstants';
 
-const listNeeds = () => async (dispatch) => {
+export const listNeeds = () => async (dispatch) => {
 	try {
 		dispatch({ type: NEED_LIST_REQUEST });
 
