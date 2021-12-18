@@ -6,12 +6,13 @@ import { listNeeds } from '../actions/needActions';
 
 export default function HomeScreen() {
 	const dispatch = useDispatch();
+	const needList = useSelector((state) => state.needList);
+	const { error, loading, needs } = needList;
 
 	useEffect(() => {
 		dispatch(listNeeds());
 	}, []);
 
-	const needs = [];
 	return (
 		<div>
 			<h1>Latest Needs</h1>
