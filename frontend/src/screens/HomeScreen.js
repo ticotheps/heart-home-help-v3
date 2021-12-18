@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Need from '../components/Need';
-import axios from 'axios';
+import { listNeeds } from '../actions/needActions';
 
 export default function HomeScreen() {
-	const [needs, setNeeds] = useState([]);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		async function fetchNeeds() {
-			const { data } = await axios.get('/api/needs/');
-			setNeeds(data);
-		}
-		fetchNeeds();
+		dispatch(listNeeds());
 	}, []);
 
+	const needs = [];
 	return (
 		<div>
 			<h1>Latest Needs</h1>
