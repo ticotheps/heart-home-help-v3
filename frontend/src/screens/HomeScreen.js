@@ -16,13 +16,19 @@ export default function HomeScreen() {
 	return (
 		<div>
 			<h1>Latest Needs</h1>
-			<Row>
-				{needs.map((need) => (
-					<Col key={need._id} sm={12} md={6} lg={4} xl={3}>
-						<Need need={need} />
-					</Col>
-				))}
-			</Row>
+			{loading ? (
+				<h2>Loading...</h2>
+			) : error ? (
+				<h3>{error}</h3>
+			) : (
+				<Row>
+					{needs.map((need) => (
+						<Col key={need._id} sm={12} md={6} lg={4} xl={3}>
+							<Need need={need} />
+						</Col>
+					))}
+				</Row>
+			)}
 		</div>
 	);
 }
