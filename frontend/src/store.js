@@ -5,7 +5,7 @@ import { needListReducer, needDetailsReducer } from './reducers/needReducers';
 
 const reducer = combineReducers({
 	needList: needListReducer,
-	needDetils: needDetailsReducer,
+	needDetails: needDetailsReducer,
 });
 
 const initialState = {};
