@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Need from '../components/Need';
 import Loader from '../components/Loader';
+import Message from '../components/Message';
 import { listNeeds } from '../actions/needActions';
 
 export default function HomeScreen() {
@@ -20,7 +21,7 @@ export default function HomeScreen() {
 			{loading ? (
 				<Loader />
 			) : error ? (
-				<h3>{error}</h3>
+				<Message variant='danger'>{error}</Message>
 			) : (
 				<Row>
 					{needs.map((need) => (
