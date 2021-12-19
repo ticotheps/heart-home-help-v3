@@ -1,13 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap';
+import {
+	Row,
+	Col,
+	Image,
+	ListGroup,
+	Button,
+	Card,
+	Form,
+} from 'react-bootstrap';
 import Rating from '../components/Rating';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { listNeedDetails } from '../actions/needActions';
 
 export default function NeedScreen({ match }) {
+	const [qty, setQty] = useState(1);
+
 	const dispatch = useDispatch();
 	const needDetails = useSelector((state) => state.needDetails);
 	const { error, loading, need } = needDetails;
@@ -26,15 +36,16 @@ export default function NeedScreen({ match }) {
 			) : error ? (
 				<Message variant='danger'>{error}</Message>
 			) : (
-				<Row>
-					<Col md={6}>
+				<Row className='align-items-center'>
+					<Col md={5}>
 						<Image src={need.image} alt={need.name} fluid />
 					</Col>
-					<Col md={3}>
+					<Col md={4}>
 						<ListGroup variant='flush'>
 							<ListGroup.Item>
 								<h3>{need.name}</h3>
 							</ListGroup.Item>
+
 							<ListGroup.Item>
 								<Rating
 									value={need.rating}
@@ -42,7 +53,9 @@ export default function NeedScreen({ match }) {
 									color={'#f8e825'}
 								/>
 							</ListGroup.Item>
+
 							<ListGroup.Item>Price: ${need.price}</ListGroup.Item>
+
 							<ListGroup.Item>Description: {need.description}</ListGroup.Item>
 						</ListGroup>
 					</Col>
@@ -50,21 +63,44 @@ export default function NeedScreen({ match }) {
 						<Card>
 							<ListGroup variant='flush'>
 								<ListGroup.Item>
-									<Row>
+									<Row className='align-items-center'>
 										<Col>Price: </Col>
 										<Col>
 											<strong>${need.price}</strong>
 										</Col>
 									</Row>
 								</ListGroup.Item>
+
 								<ListGroup.Item>
-									<Row>
+									<Row className='align-items-center'>
 										<Col>Status: </Col>
 										<Col>
 											{need.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
 										</Col>
 									</Row>
 								</ListGroup.Item>
+
+								{need.countInStock > 0 && (
+									<ListGroup.Item>
+										<Row className='align-items-center'>
+											<Col>Qty: </Col>
+											<Col>
+												<Form.Control
+													as='select'
+													value={qty}
+													onChange={(e) => setQty(e.target.value)}
+												>
+													{[...Array(need.countInStock).keys()].map((x) => (
+														<option key={x + 1} value={x + 1}>
+															{x + 1}
+														</option>
+													))}
+												</Form.Control>
+											</Col>
+										</Row>
+									</ListGroup.Item>
+								)}
+
 								<ListGroup.Item>
 									<div className='d-grid gap-2'>
 										<Button
