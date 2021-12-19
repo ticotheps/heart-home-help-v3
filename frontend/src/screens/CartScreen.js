@@ -10,7 +10,7 @@ import {
 	Button,
 	Card,
 } from 'react-bootstrap';
-import { Message } from '../components/Message';
+import Message from '../components/Message';
 import { addToCart } from '../actions/cartActions';
 
 export default function CartScreen({ match, location, history }) {
@@ -22,7 +22,6 @@ export default function CartScreen({ match, location, history }) {
 
 	const cart = useSelector((state) => state.cart);
 	const { cartItems } = cart;
-	console.log({ cartItems });
 
 	useEffect(() => {
 		if (needId) {
@@ -32,8 +31,18 @@ export default function CartScreen({ match, location, history }) {
 	}, [dispatch, needId, qty]);
 
 	return (
-		<div>
-			<h4>Cart</h4>
-		</div>
+		<Row>
+			<Col md={8}>
+				<h1>Shopping Cart</h1>
+				{cartItems.length === 0 ? (
+					<Message variant='info'>
+						Your cart is empty. <Link to='/'>Let's fill it up!</Link>
+					</Message>
+				) : (
+					<ListGroup variant='flush'></ListGroup>
+				)}
+			</Col>
+			<Col md={4}></Col>
+		</Row>
 	);
 }
