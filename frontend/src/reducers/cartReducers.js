@@ -10,6 +10,8 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 				return {
 					...state,
 					cartItems: state.cartItems.map((x) =>
+						// 'need' here does not refer to an object, but rather
+						// the ID of an object.
 						x.need === existItem.need ? item : x
 					),
 				};
