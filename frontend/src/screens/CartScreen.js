@@ -39,7 +39,21 @@ export default function CartScreen({ match, location, history }) {
 						Your cart is empty. <Link to='/'>Let's fill it up!</Link>
 					</Message>
 				) : (
-					<ListGroup variant='flush'></ListGroup>
+					<ListGroup variant='flush'>
+						{cartItems.map((item) => (
+							<ListGroup.Item key={item.need}>
+								<Row>
+									<Col md={2}>
+										<Image src={item.image} alt={item.name} fluid rounded />
+									</Col>
+									<Col md={3}>
+										<Link to={`/need/${item.need}`}>{item.name}</Link>
+									</Col>
+									<Col md={2}>${item.price}</Col>
+								</Row>
+							</ListGroup.Item>
+						))}
+					</ListGroup>
 				)}
 			</Col>
 			<Col md={4}></Col>
