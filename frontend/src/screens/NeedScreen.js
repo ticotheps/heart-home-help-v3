@@ -15,7 +15,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { listNeedDetails } from '../actions/needActions';
 
-export default function NeedScreen({ match }) {
+export default function NeedScreen({ match, history }) {
 	const [qty, setQty] = useState(1);
 
 	const dispatch = useDispatch();
@@ -25,6 +25,10 @@ export default function NeedScreen({ match }) {
 	useEffect(() => {
 		dispatch(listNeedDetails(match.params.id));
 	}, [dispatch, match]);
+
+	const addToCartHandler = () => {
+		history.push(`/cart/${match.params.id}?qty=${qty}`);
+	};
 
 	return (
 		<div>
@@ -104,6 +108,7 @@ export default function NeedScreen({ match }) {
 								<ListGroup.Item>
 									<div className='d-grid gap-2'>
 										<Button
+											onClick={addToCartHandler}
 											className='btn btn-lg btn-dark'
 											disabled={need.countInStock === 0}
 											type='button'
