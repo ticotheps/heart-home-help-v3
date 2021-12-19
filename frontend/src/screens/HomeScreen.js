@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Need from '../components/Need';
+import Loader from '../components/Loader';
 import { listNeeds } from '../actions/needActions';
 
 export default function HomeScreen() {
@@ -17,7 +18,7 @@ export default function HomeScreen() {
 		<div>
 			<h1>Latest Needs</h1>
 			{loading ? (
-				<h2>Loading...</h2>
+				<Loader />
 			) : error ? (
 				<h3>{error}</h3>
 			) : (
